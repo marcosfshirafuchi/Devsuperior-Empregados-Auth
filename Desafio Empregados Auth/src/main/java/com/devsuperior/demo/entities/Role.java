@@ -11,7 +11,7 @@ import java.util.Objects;
 @Table(name = "tb_role")
 // A classe Role implementa GrantedAuthority, uma interface do Spring Security que representa uma permissão
 // concedida a um principal (usuário). É usada para definir os perfis de acesso no sistema.
-public class Role  {
+public class Role implements GrantedAuthority {
     private static final long serialVersionUID = 1L;
 
     // @Id: Define que o campo id é a chave primária da tabela.
@@ -44,6 +44,7 @@ public class Role  {
     // getAuthority(): Método da interface GrantedAuthority que retorna a string que representa a autoridade.
     // Por exemplo, "ROLE_ADMIN" ou "ROLE_OPERATOR".
 
+    @Override
     public String getAuthority() {
         return authority;
     }
